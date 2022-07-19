@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ApiGeral.Netdb;
 
 namespace ApiGeral.Controllers
 {
@@ -12,6 +13,7 @@ namespace ApiGeral.Controllers
         {
             ViewBag.Title = "Home Page";
 
+            ConnHomolog.testAsync();
             return View();
         }
     }

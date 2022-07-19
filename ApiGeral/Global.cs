@@ -29,6 +29,7 @@ namespace ApiGeral
         public static int contador = 0;
 
         public static void LimparListas() {
+            listaBase.Clear();
             listaBase2.Clear();
             listaBase3.Clear();
             listaBase4.Clear();
@@ -41,6 +42,8 @@ namespace ApiGeral
             listaBase11.Clear();
             
         }
-    }
 
+
+    }
+   
 }

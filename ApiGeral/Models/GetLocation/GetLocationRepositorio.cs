@@ -16,8 +16,6 @@ namespace ApiGeral.Models.Getlocation
         {
 
             //Criar metodo para adicionar os itens na lista
-            //Add(new GetLocation { id = 01, lc_id = 01, id_regiao = 01, lc_descricao = "rafa", lc_coef_a = "a", lc_coef_b = "b", lc_coef_c = "c", lc_coef_d = "d", numeric = 20, id_poligono = 01, codigo_uen = "aff" });
-
 
             while (Global.listaBase.Count > _nextId)
             {
@@ -49,7 +47,7 @@ namespace ApiGeral.Models.Getlocation
 
         public GetLocation Get(double lc_id)
         {
-
+            //GetAll();
             return listaGetLocation.Find(p => p.Lc_id == lc_id);
         }
         
@@ -80,14 +78,14 @@ namespace ApiGeral.Models.Getlocation
                         Id_poligono = int.Parse(Global.listaBase9[_nextId]),
                     });
                 }
-                //Global.LimparListas();
+                
             }
 
             else
             {
                 return null;
             }
-
+            
             return listaGetLocation;
         }
 

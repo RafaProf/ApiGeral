@@ -28,7 +28,7 @@ namespace ApiGeral.Netdb
         //IP Location
         public static void ConsultarLocation()
         {
-            
+            Global.LimparListas();
             connectionEmt.Open();
 
             NpgsqlCommand cmd = new NpgsqlCommand(@"select * from localidade", connectionEmt);

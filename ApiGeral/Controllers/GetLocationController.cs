@@ -39,9 +39,10 @@ namespace ApiGeral.Controllers
 
         }
 
-        public HttpResponseMessage GetLocationById(int id)
+        public HttpResponseMessage GetLocationById(int Lc_id)
         {
-            GetLocation getLocation = repositorio.Get(id);
+            GetAllLocationOn();
+            GetLocation getLocation = repositorio.Get(Lc_id);
             
 
             if (getLocation == null)
@@ -58,7 +59,7 @@ namespace ApiGeral.Controllers
 
         public IEnumerable<GetLocation> GetLocationByDesc(string lc_descricao)
         {
-            
+            GetAllLocationOn();
             return repositorio.GetAll().Where(
                 item => string.Equals(item.Lc_descricao, lc_descricao, StringComparison.OrdinalIgnoreCase)
                 );
@@ -66,7 +67,7 @@ namespace ApiGeral.Controllers
 
         public IEnumerable<GetLocation> GetLocationByIdPol(int id_poligono) // categoria do link json fica nos atributos dos metodos controller
         {
-            //Global.LimparListas();
+            GetAllLocationOn();
             return repositorio.GetAll().Where(
                 item => string.Equals(item.Id_poligono.ToString(), id_poligono.ToString(), StringComparison.OrdinalIgnoreCase)
                 );
