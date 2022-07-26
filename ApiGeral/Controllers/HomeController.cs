@@ -13,7 +13,7 @@ namespace ApiGeral.Controllers
         {
             ViewBag.Title = "Home Page";
 
-            ConnHomolog.testAsync();
+            //ConnHomolog.testAsync();
             return View();
         }
     }

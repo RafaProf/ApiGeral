@@ -59,7 +59,7 @@ namespace ApiGeral.Controllers
         }
 
 
-        public IEnumerable<User> GetLocationByUsuario(string Usuario)
+        public IEnumerable<User> GetUserByUsuario(string Usuario)
         {
             GetAllUser();
             return repositorio.GetAll().Where(
@@ -67,7 +67,7 @@ namespace ApiGeral.Controllers
                 );
         }
 
-        public IEnumerable<User> GetLocationByDescricao(string descricao) // categoria do link json fica nos atributos dos metodos controller
+        public IEnumerable<User> GetUserByDescricao(string descricao) // categoria do link json fica nos atributos dos metodos controller
         {
             GetAllUser();
             return repositorio.GetAll().Where(
@@ -79,7 +79,7 @@ namespace ApiGeral.Controllers
         [HttpPost]
         public HttpResponseMessage PostLocation(User user)
         {
-
+            
             bool result = repositorio.Add(user); //Chamada add banco de dados
 
             if (result)

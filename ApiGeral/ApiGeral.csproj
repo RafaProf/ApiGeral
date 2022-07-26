@@ -200,6 +200,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\GetLocationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProdGeralController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,6 +210,9 @@
     <Compile Include="Models\GetLocation\GetLocation.cs" />
     <Compile Include="Models\GetLocation\GetLocationRepositorio.cs" />
     <Compile Include="Models\GetLocation\IGetLocation.cs" />
+    <Compile Include="Models\Produção\IProdGeral.cs" />
+    <Compile Include="Models\Produção\ProdGeral.cs" />
+    <Compile Include="Models\Produção\ProdGeralRepositorio.cs" />
     <Compile Include="Models\User\IUser.cs" />
     <Compile Include="Models\User\User.cs" />
     <Compile Include="Models\User\UserRepositorio.cs" />
@@ -270,6 +274,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\GetLocation\" />
+    <Folder Include="Views\ProdGeral\" />
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>

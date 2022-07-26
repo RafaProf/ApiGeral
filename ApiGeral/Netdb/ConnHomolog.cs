@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using ApiGeral.Models.User;
+using System.Text;
 
 namespace ApiGeral.Netdb
 {
@@ -76,7 +77,7 @@ namespace ApiGeral.Netdb
             NpgsqlDataReader dados = cmd.ExecuteReader();
 
 
-
+            connectionHomol.Close();
 
         }
 
@@ -98,6 +99,8 @@ namespace ApiGeral.Netdb
                 var response =  client.PostAsJsonAsync("https://localhost:44375/api/user", novo);
                 //response.EnsureSuccessStatusCode();
                
+
+
             }
             catch (Exception)
             {
@@ -105,6 +108,17 @@ namespace ApiGeral.Netdb
                 throw;
             }
             
+        }
+
+        public async void testlol()
+        {
+            string myJson = "{'Username': 'myusername','Password':'pass'}";
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync(
+                    "http://yourUrl",
+                     new StringContent(myJson, Encoding.UTF8, "application/json"));
+            }
         }
     }
 }
