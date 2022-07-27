@@ -82,34 +82,6 @@ namespace ApiGeral.Netdb
         }
 
 
-
-        public static void testAsync() //emulação de método externo
-        {
-
-            try
-            {
-                var novo = new User()
-                {
-                    Usuario = "testei",
-                    Id = 500,
-                    Senha = "123456",
-                    Descricao = "aff rafa"
-                };
-
-                var response =  client.PostAsJsonAsync("https://localhost:44375/api/user", novo);
-                //response.EnsureSuccessStatusCode();
-               
-
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-            
-        }
-
         public async void testlol()
         {
             string myJson = "{'Username': 'myusername','Password':'pass'}";
@@ -118,6 +90,34 @@ namespace ApiGeral.Netdb
                 var response = await client.PostAsync(
                     "http://yourUrl",
                      new StringContent(myJson, Encoding.UTF8, "application/json"));
+            }
+        }
+
+
+        public static bool GetLogin(string usuario, string senha) {
+
+            //Global.LimparListas();
+            connectionHomol.Open();
+
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select usuario, senha, descricao from test_user_api
+where usuario = '"+usuario+"' and senha = '"+senha+"'", connectionHomol);
+
+            NpgsqlDataReader dados = cmd.ExecuteReader();
+
+
+            if (dados.Read() == true)
+            {
+                dados.Close();
+
+                connectionHomol.Close();
+                return true;
+            }
+            else
+            {
+                dados.Close();
+
+                connectionHomol.Close();
+                return  false;
             }
         }
     }

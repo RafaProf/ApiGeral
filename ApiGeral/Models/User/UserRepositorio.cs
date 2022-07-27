@@ -14,7 +14,7 @@ namespace ApiGeral.Models.User
 
         public UserRepositorio()
         {
-            while (Global.listaBase.Count > _nextId)
+            while (0 > _nextId)
             {
                 Add(new User
                 {

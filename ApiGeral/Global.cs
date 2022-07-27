@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using ApiGeral.Netdb;
 
 namespace ApiGeral
 {
@@ -11,7 +10,13 @@ namespace ApiGeral
 
         public static List<Array> listaGeral = new List<Array>();
 
-
+        //Data Externa e User Externo
+        public static string DataInicialGeralExt = "01/07/2022";
+        public static string DataFinalGeralExt = "27/07/2022";
+        public static string UsuarioGeralExt = "SALE";
+        public static string UsuarioAut = "SALE";
+        public static string SenhaAut = "SALE";
+        public static string OpcExterna = "";
 
         //Lista base para os Datatable
         public static List<string> listaBase = new List<string>();
@@ -43,7 +48,13 @@ namespace ApiGeral
             
         }
 
-
+        public static void GetMetodos(string opc)
+        {
+            if (opc == "EMT_UM_I")
+            {
+                ConnEMT.GetProducaoIndiv(DataInicialGeralExt, UsuarioGeralExt);
+            }
+        }
     }
    
 }

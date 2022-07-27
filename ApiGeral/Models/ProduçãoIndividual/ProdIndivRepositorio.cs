@@ -1,33 +1,37 @@
-﻿using System;
+﻿using ApiGeral.Models.ProduçãoIndividual;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ApiGeral.Models.Produção
+namespace ApiGeral.Models.ProduçãoIndividual
 {
-    public class ProdGeralRepositorio : IProdGeral
+    public class ProdIndivRepositorio : IProdIndiv
     {
-        private List<ProdGeral> listaProdGeral = new List<ProdGeral>();
+        private List<ProdIndiv> listaProdIndiv = new List<ProdIndiv>();
         private int _nextId = 0;
 
 
-        public ProdGeralRepositorio() {
+        public ProdIndivRepositorio()
+        {
+            
             while (0 > _nextId)
             {
-                Add(new ProdGeral
+                Add(new ProdIndiv
                 {
                     Id = _nextId,
                     Usuario = Global.listaBase[_nextId],
-                    Quantidade = int.Parse(Global.listaBase2[_nextId]),
-                    //DataInicial = Global.listaBase3[_nextId],
-                    //DataFinal = Global.listaBase3[_nextId],
+                    Data = Global.listaBase2[_nextId],
+                    Quantidade = int.Parse(Global.listaBase3[_nextId]),
+
+
 
                 });
             }
 
         }
 
-        public bool Add(ProdGeral item)
+        public bool Add(ProdIndiv item)
         {
             bool addResult = false;
 
@@ -35,7 +39,7 @@ namespace ApiGeral.Models.Produção
             {
                 return addResult;
             }
-            int index = listaProdGeral.FindIndex(s => s.Id == item.Id);
+            int index = listaProdIndiv.FindIndex(s => s.Id == item.Id);
 
             if (index == -1)
             {
@@ -60,33 +64,33 @@ namespace ApiGeral.Models.Produção
             }
         }
 
-        public ProdGeral AddPadrao(ProdGeral item)
+        public ProdIndiv AddPadrao(ProdIndiv item)
         {  //Lista OFF do json
             if (item == null)
             {
                 throw new ArgumentNullException("item");
             }
             item.Id = _nextId++;
-            listaProdGeral.Add(item);
+            listaProdIndiv.Add(item);
             return item;
         }
 
-        public ProdGeral Get(int id)
+        public ProdIndiv Get(int id)
         {
             GetAll();
-            return listaProdGeral.Find(p => p.Id == id);
+            return listaProdIndiv.Find(p => p.Id == id);
         } //Id genérico
 
-        public ProdGeral Get(string usuario)
+        public ProdIndiv Get(string usuario)
         {
-            return listaProdGeral.Find(p =>p.Usuario == usuario);
+            return listaProdIndiv.Find(p => p.Usuario == usuario);
         }
 
-        public IEnumerable<ProdGeral> GetAll()  //Getall de tudo, implementa a lista de novo
+        public IEnumerable<ProdIndiv> GetAll()  //Getall de tudo, implementa a lista de novo
         {
 
             _nextId = 0;
-            listaProdGeral.Clear();
+            listaProdIndiv.Clear();
 
 
             int opc = Global.opcGeral;
@@ -96,13 +100,14 @@ namespace ApiGeral.Models.Produção
             {
                 while (Global.listaBase.Count > _nextId)
                 {
-                    AddPadrao(new ProdGeral
+                    AddPadrao(new ProdIndiv
                     {
                         Id = _nextId,
                         Usuario = Global.listaBase[_nextId],
-                        Quantidade = int.Parse(Global.listaBase2[_nextId]),
-                        //DataInicial = Global.listaBase3[_nextId],
-                        //DataFinal = Global.listaBase3[_nextId],
+                        Data = Global.listaBase2[_nextId],
+                        Quantidade = int.Parse(Global.listaBase3[_nextId]),
+                        
+                        
                     });
                 }
 
@@ -113,23 +118,23 @@ namespace ApiGeral.Models.Produção
                 return null;
             }
 
-            return listaProdGeral;
+            return listaProdIndiv;
         }
 
 
-        public bool Update(ProdGeral prod) // Em implementação
+        public bool Update(ProdIndiv prod) // Em implementação
         {
             if (prod == null)
             {
                 throw new ArgumentNullException("Usuário");
             }
-            int index = listaProdGeral.FindIndex(s => s.Usuario == prod.Usuario);
+            int index = listaProdIndiv.FindIndex(s => s.Usuario == prod.Usuario);
             if (index == -1)
             {
                 return false;
             }
-            listaProdGeral.RemoveAt(index);
-            listaProdGeral.Add(prod);
+            listaProdIndiv.RemoveAt(index);
+            listaProdIndiv.Add(prod);
             return true;
         }
     }

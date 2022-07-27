@@ -17,7 +17,7 @@ namespace ApiGeral.Models.Getlocation
 
             //Criar metodo para adicionar os itens na lista
 
-            while (Global.listaBase.Count > _nextId)
+            while (0 > _nextId)
             {
                 Add(new GetLocation
                 {
