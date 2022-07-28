@@ -35,20 +35,25 @@ namespace ApiGeral.Controllers
                 var response = Request.CreateResponse<Login>(HttpStatusCode.Created, null);
                 string uri = Url.Link("DefaultApi", new { usuario = item.Usuario });
                 response.Headers.Location = new Uri(uri); Console.Write(response.Content);
+                
 
                 if (ConnHomolog.GetLogin(Global.UsuarioAut, Global.SenhaAut ) == true)
                 {
+                    response.StatusCode = HttpStatusCode.OK;
+                    response.Headers.Add("Resultado", "Sucesso");
+                    response.Headers.Location = new Uri("http://solucoes-intellissis.com.br:8");
                     return response;
                 }
                 else
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "A informação não foi validada com sucesso");
+                    response.Headers.Add("Resultado", "Falhou");
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "A informação não foi validada com sucesso: Tentativa por usuário = " + item.Usuario.ToString());
 
                 }
             }
             else
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "A informação não foi incluído com sucesso");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Falha na solicitação de dados: Sem dados");
             }
         }
     }
