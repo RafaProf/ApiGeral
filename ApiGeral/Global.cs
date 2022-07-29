@@ -48,12 +48,29 @@ namespace ApiGeral
             
         }
 
-        public static void GetMetodos(string opc)
+        public static bool GetMetodos(string opc)
         {
-            if (opc == "EMT_UM_I")
+            try
             {
-                ConnEMT.GetProducaoIndiv(DataInicialGeralExt, UsuarioGeralExt);
+                if (opc == "EMT_UM_I")
+                {
+                    ConnEMT.GetProducaoIndiv(DataInicialGeralExt, UsuarioGeralExt);
+                }
+                if (opc == "Datas")
+                {
+                    ConnHomolog.GetData(DataInicialGeralExt, DataFinalGeralExt);
+                }
+
+                else { return false; }
+                
+                return true;
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
     }
    

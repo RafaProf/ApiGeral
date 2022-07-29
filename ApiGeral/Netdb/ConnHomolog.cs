@@ -120,5 +120,21 @@ where usuario = '"+usuario+"' and senha = '"+senha+"'", connectionHomol);
                 return  false;
             }
         }
+
+        public static bool GetData(string data1, string data2)
+        {
+            try
+            {
+                Global.DataInicialGeralExt = data1;
+                Global.DataFinalGeralExt = data2;
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+        }
     }
 }

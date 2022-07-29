@@ -35,8 +35,19 @@ namespace ApiGeral.Controllers
                 var response = Request.CreateResponse<DatasBase>(HttpStatusCode.Created, null);
                 string uri = Url.Link("DefaultApi", new { usuario = item.Usuario });
                 response.Headers.Location = new Uri(uri); Console.Write(response.Content);
-                Global.GetMetodos(Global.OpcExterna);
-                return response;
+
+                if (Global.GetMetodos(Global.OpcExterna)) //Espera da resposta dos metodos sob opção
+                {
+                    response.StatusCode = HttpStatusCode.OK;
+                    response.Headers.Add("Resultado", "Sucesso");
+                    return response;
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "A requisição falhou");
+
+                }
+
             }
             else
             {
