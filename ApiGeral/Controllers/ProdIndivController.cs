@@ -25,7 +25,7 @@ namespace ApiGeral.Controllers
             if (opc == 0)
             {
                 //ConnEMT.GetProducaoIndiv(Global.DataInicialGeralExt, Global.UsuarioGeralExt); //Método principal do banco de dados
-                //Global.GetMetodos(Global.OpcExterna);
+                //Global.GetMetodos(Global.OpcExterna); vai fazer tudo duas vezes
 
 
                 List<ProdIndiv> listaProdIndiv = repositorio.GetAll().ToList();

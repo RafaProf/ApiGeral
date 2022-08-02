@@ -24,7 +24,7 @@ namespace ApiGeral.Controllers
 
             if (opc == 0)
             {
-                ConnEMT.GetProducaoGeral("01/07/2022", "31/07/2022");
+                //ConnEMT.GetProducaoGeral("01/07/2022", "31/07/2022");
 
 
 

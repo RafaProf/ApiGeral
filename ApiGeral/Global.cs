@@ -56,9 +56,13 @@ namespace ApiGeral
                 {
                     ConnEMT.GetProducaoIndiv(DataInicialGeralExt, UsuarioGeralExt);
                 }
-                if (opc == "Datas")
+                else if (opc == "Datas")
                 {
                     ConnHomolog.GetData(DataInicialGeralExt, DataFinalGeralExt);
+                }
+                else if (opc == "EMT_UM_G")
+                {
+                    ConnEMT.GetProducaoGeral(DataInicialGeralExt, DataFinalGeralExt);
                 }
 
                 else { return false; }

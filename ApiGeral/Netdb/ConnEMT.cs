@@ -90,7 +90,7 @@ namespace ApiGeral.Netdb
             connectionEmt.Close();
         }
 
-        public static void GetProducaoGeral(string date1, string date2) 
+        public static bool GetProducaoGeral(string date1, string date2) 
         {
             Global.LimparListas();
             connectionEmt.Open();
@@ -139,9 +139,10 @@ group by usuario", connectionEmt);
             dados.Close();
 
             connectionEmt.Close();
+            return true;
         }
 
-        public static void GetProducaoIndiv(string data, string usuario)
+        public static bool GetProducaoIndiv(string data, string usuario)
         {
             Global.LimparListas();
             connectionEmt.Open();
@@ -156,8 +157,6 @@ group by usuario", connectionEmt);
             NpgsqlDataReader dados = cmd.ExecuteReader();
 
 
-
-
             while (dados.Read())
             {
 
@@ -169,7 +168,8 @@ group by usuario", connectionEmt);
                     Global.listaBase.Add(dados.GetString(0));
                     Global.listaBase2.Add(dados.GetDate(1).ToString());
                     Global.listaBase3.Add(dados.GetInt32(2).ToString());
-                    
+
+
                 }
                 catch (Exception)
                 {
@@ -178,13 +178,14 @@ group by usuario", connectionEmt);
                     connectionEmt.Close();
                     throw;
                 }
-
+                
 
             }
-
+            
             dados.Close();
 
             connectionEmt.Close();
+            return true;
         }
     }
 }
