@@ -96,9 +96,9 @@ namespace ApiGeral.Netdb
             connectionEmt.Open();
 
             NpgsqlCommand cmd = new NpgsqlCommand(@"select usuario , COUNT(*) QTDE from (
-select distinct usuario, mslink_pg from historico_uso_mutuo hum where date(data_operacao) between '01/07/2022' and '31/07/2022' and 
-tipo_operacao = 'INCLUSAO') TOT
-group by usuario", connectionEmt);
+select distinct usuario, mslink_pg from historico_uso_mutuo hum where date(data_operacao) between '" + date1 + "' and '" + date2 + "' and " +
+"tipo_operacao = 'INCLUSAO') TOT " +
+"group by usuario", connectionEmt);
 
             NpgsqlDataReader dados = cmd.ExecuteReader();
 
@@ -152,10 +152,36 @@ group by usuario", connectionEmt);
 	from historico_uso_mutuo hum 
 	where date(data_operacao) between '"+ data + "' and current_date " +
     " and tipo_operacao = 'INCLUSAO') TOT where usuario like '%" + usuario + "%' " +
-    " group by usuario, data_operacao;", connectionEmt);
+    " group by data_operacao, usuario order by data_operacao asc;", connectionEmt);
 
             NpgsqlDataReader dados = cmd.ExecuteReader();
 
+
+            try
+            {
+
+                if (dados.HasRows)
+                {
+                    Console.WriteLine("aff");
+                }
+                else
+                {
+                    int i = 0;
+                    while (i != 3)
+                    {
+                        Global.listaBase.Add(usuario);
+                        Global.listaBase2.Add(DateTime.Now.ToString("dd/MM/yyyy"));
+                        Global.listaBase3.Add("0");
+                        i++;
+
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("vazio");
+            }
 
             while (dados.Read())
             {

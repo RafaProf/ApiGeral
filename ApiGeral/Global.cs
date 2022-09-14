@@ -12,7 +12,7 @@ namespace ApiGeral
 
         //Data Externa e User Externo
         public static string DataInicialGeralExt = "01/07/2022";
-        public static string DataFinalGeralExt = "27/07/2022";
+        public static string DataFinalGeralExt = "30/07/2022";
         public static string UsuarioGeralExt = "SALE";
         public static string UsuarioAut = "SALE";
         public static string SenhaAut = "SALE";
@@ -54,7 +54,23 @@ namespace ApiGeral
             {
                 if (opc == "EMT_UM_I")
                 {
-                    ConnEMT.GetProducaoIndiv(DataInicialGeralExt, UsuarioGeralExt);
+                    try
+                    {
+                        ConnEMT.GetProducaoIndiv(DataInicialGeralExt, UsuarioGeralExt);
+                    }
+                    catch (Exception)
+                    {
+                        int i = 2;
+                        while (i != 1)
+                        {
+                            Global.listaBase.Add(UsuarioGeralExt);
+                            Global.listaBase2.Add(DateTime.Now.Date.ToString());
+                            Global.listaBase3.Add("0");
+                            i++;
+
+                        }
+
+                    }
                 }
                 else if (opc == "Datas")
                 {
