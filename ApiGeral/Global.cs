@@ -72,6 +72,26 @@ namespace ApiGeral
 
                     }
                 }
+                else if (opc == "EMT_UM_I_IP")
+                {
+                    try
+                    {
+                        ConnEMT.GetProducaoIndivIp(DataInicialGeralExt, UsuarioGeralExt);
+                    }
+                    catch (Exception)
+                    {
+                        int i = 2;
+                        while (i != 1)
+                        {
+                            Global.listaBase.Add(UsuarioGeralExt);
+                            Global.listaBase2.Add(DateTime.Now.Date.ToString());
+                            Global.listaBase3.Add("0");
+                            i++;
+
+                        }
+
+                    }
+                }
                 else if (opc == "Datas")
                 {
                     ConnHomolog.GetData(DataInicialGeralExt, DataFinalGeralExt);
@@ -79,6 +99,34 @@ namespace ApiGeral
                 else if (opc == "EMT_UM_G")
                 {
                     ConnEMT.GetProducaoGeral(DataInicialGeralExt, DataFinalGeralExt);
+                }
+                else if (opc == "EMT_UM_G_IP")
+                {
+                    ConnEMT.GetProducaoGeralIP(DataInicialGeralExt, DataFinalGeralExt);
+                }
+                else if (opc == "RJ_UM_G")
+                {
+                    ConnRJ.GetProducaoGeral(DataInicialGeralExt, DataFinalGeralExt);
+                }
+                else if (opc == "RJ_UM_I")
+                {
+                    try
+                    {
+                        ConnRJ.GetProducaoIndiv(DataInicialGeralExt, UsuarioGeralExt);
+                    }
+                    catch (Exception)
+                    {
+                        int i = 2;
+                        while (i != 1)
+                        {
+                            Global.listaBase.Add(UsuarioGeralExt);
+                            Global.listaBase2.Add(DateTime.Now.Date.ToString());
+                            Global.listaBase3.Add("0");
+                            i++;
+
+                        }
+
+                    }
                 }
 
                 else { return false; }

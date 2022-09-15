@@ -203,6 +203,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProdGeralController.cs" />
+    <Compile Include="Controllers\ProdGeralIpController.cs" />
     <Compile Include="Controllers\ProdIndivController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -216,12 +217,17 @@
     <Compile Include="Models\GetLocation\GetLocation.cs" />
     <Compile Include="Models\GetLocation\GetLocationRepositorio.cs" />
     <Compile Include="Models\GetLocation\IGetLocation.cs" />
+    <Compile Include="Models\InfoColeta\IInfoColeta.cs" />
+    <Compile Include="Models\InfoColeta\InfoColeta.cs" />
     <Compile Include="Models\Login\ILogin.cs" />
     <Compile Include="Models\Login\Login.cs" />
     <Compile Include="Models\Login\LoginRepositorio.cs" />
     <Compile Include="Models\ProduçãoIndividual\IProdIndiv.cs" />
     <Compile Include="Models\ProduçãoIndividual\ProdIndiv.cs" />
     <Compile Include="Models\ProduçãoIndividual\ProdIndivRepositorio.cs" />
+    <Compile Include="Models\ProduçãoIP\IProdGeralIp.cs" />
+    <Compile Include="Models\ProduçãoIP\ProdGeralIp.cs" />
+    <Compile Include="Models\ProduçãoIP\ProdGeralIpRepositorio.cs" />
     <Compile Include="Models\Produção\IProdGeral.cs" />
     <Compile Include="Models\Produção\ProdGeral.cs" />
     <Compile Include="Models\Produção\ProdGeralRepositorio.cs" />
@@ -230,6 +236,7 @@
     <Compile Include="Models\User\UserRepositorio.cs" />
     <Compile Include="Netdb\ConnEMT.cs" />
     <Compile Include="Netdb\ConnHomolog.cs" />
+    <Compile Include="Netdb\ConnRJ.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +295,7 @@
     <Folder Include="Views\DatasBase\" />
     <Folder Include="Views\GetLocation\" />
     <Folder Include="Views\Login\" />
+    <Folder Include="Views\ProdGeralIp\" />
     <Folder Include="Views\ProdGeral\" />
     <Folder Include="Views\ProdIndiv\" />
     <Folder Include="Views\User\" />
