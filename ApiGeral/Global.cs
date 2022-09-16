@@ -13,6 +13,7 @@ namespace ApiGeral
         //Data Externa e User Externo
         public static string DataInicialGeralExt = "01/07/2022";
         public static string DataFinalGeralExt = "30/07/2022";
+        public static string LoteInformacao = "8279";
         public static string UsuarioGeralExt = "SALE";
         public static string UsuarioAut = "SALE";
         public static string SenhaAut = "SALE";
@@ -127,6 +128,14 @@ namespace ApiGeral
                         }
 
                     }
+                }
+                else if (opc == "LOTE_EMT")
+                {
+                    ConnEMT.GetInfoLote(DataInicialGeralExt);
+                }
+                else if (opc == "LOTE_RJ")
+                {
+                    ConnRJ.GetInfoLote(DataInicialGeralExt);
                 }
 
                 else { return false; }

@@ -10,8 +10,8 @@ namespace ApiGeral.Models.InfoColeta
     internal interface IInfoColeta
     {
         IEnumerable<InfoColeta> GetAll();
-        InfoColeta Get(double Lc_id);
-        bool Update(InfoColeta location);
+        InfoColeta Get(string Coleta);
+        //bool Update(InfoColeta location);
         InfoColeta Add(InfoColeta item);
     }
 }
