@@ -11,8 +11,8 @@ namespace ApiGeral
         public static List<Array> listaGeral = new List<Array>();
 
         //Data Externa e User Externo
-        public static string DataInicialGeralExt = "01/07/2022";
-        public static string DataFinalGeralExt = "30/07/2022";
+        public static string DataInicialGeralExt = "01/10/2022";
+        public static string DataFinalGeralExt = "31/10/2022";
         public static string LoteInformacao = "8279";
         public static string UsuarioGeralExt = "SALE";
         public static string UsuarioAut = "SALE";

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApiGeral.Models.Getlocation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +17,18 @@ namespace ApiGeral.Models.Login
 
             while (0 > _nextId)
             {
-                Console.WriteLine("test");
+                Add(new Login
+                {
+                    Id = _nextId,
+                    Usuario = Global.listaBase[_nextId],
+                    //Senha = int.Parse(Global.listaBase2[_nextId]),
+                    Descricao = Global.listaBase3[_nextId],
+                    Email = Global.listaBase4[_nextId],
+                    Telefone = Global.listaBase5[_nextId],
+                    Link_foto_perfil = Global.listaBase6[_nextId],
+                    Localizacao = Global.listaBase7[_nextId],
+                    Ambiente_base = Global.listaBase8[_nextId],
+                });
             }
         }
 
@@ -61,7 +73,7 @@ namespace ApiGeral.Models.Login
             }
 
             item.Id = _nextId++;
-            listaLogin.Clear();
+            //listaLogin.Clear(); adicionar usuario
 
             listaLogin.Add(item);
 
@@ -80,6 +92,80 @@ namespace ApiGeral.Models.Login
             }
 
             return item;
+        }
+
+        public Login AddPadrao2(Login item)
+        {  //Lista OFF do json
+            if (item == null)
+            {
+                throw new ArgumentNullException("item");
+            }
+
+            item.Id = _nextId++;
+            listaLogin.Clear(); //adicionar usuario
+
+            listaLogin.Add(item);
+
+            try
+            {
+                Global.UsuarioAut = item.Usuario;
+                Global.SenhaAut = item.Senha;
+
+                //metodo auth
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return item;
+        }
+
+
+        public Login Get(string usuario)
+        {
+            //GetAll();
+            return listaLogin.Find(p => p.Usuario == usuario);
+        }
+
+        public IEnumerable<Login> GetAll()
+        {
+
+            _nextId = 0;
+            listaLogin.Clear();
+
+
+            int opc = Global.opcGeral;
+
+
+            if (opc == 0)
+            {
+                while (Global.listaBase.Count > _nextId)
+                {
+                    AddPadrao(new Login
+                    {
+                        Id = _nextId,
+                        Usuario = Global.listaBase[_nextId],
+                        //Senha = int.Parse(Global.listaBase2[_nextId]),
+                        Descricao = Global.listaBase3[_nextId],
+                        Email = Global.listaBase4[_nextId],
+                        Telefone = Global.listaBase5[_nextId],
+                        Link_foto_perfil = Global.listaBase6[_nextId],
+                        Localizacao = Global.listaBase7[_nextId],
+                        Ambiente_base = Global.listaBase8[_nextId],
+                    }); 
+                }
+
+            }
+
+            else
+            {
+                return null;
+            }
+
+            return listaLogin;
         }
     }
 

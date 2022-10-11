@@ -27,14 +27,16 @@ namespace ApiGeral.Netdb
 
         public static void GetUsers() {
 
+
+            connectionHomol.Close();
             Global.LimparListas();
             connectionHomol.Open();
 
-            NpgsqlCommand cmd = new NpgsqlCommand(@"select usuario, senha, descricao from test_user_api", connectionHomol);
+            NpgsqlCommand cmd = new NpgsqlCommand(@"select * from test_user_api", connectionHomol);
 
             NpgsqlDataReader dados = cmd.ExecuteReader();
 
-
+            int i = 0;
             while (dados.Read())
             {
 
@@ -46,15 +48,22 @@ namespace ApiGeral.Netdb
                     Global.listaBase.Add(dados.GetString(0));
                     Global.listaBase2.Add(dados.GetString(1));
                     Global.listaBase3.Add(dados.GetString(2));
-                    
+                    Global.listaBase4.Add(dados.GetString(3));
+                    Global.listaBase5.Add(dados.GetString(4));
+                    Global.listaBase6.Add(dados.GetString(5) + Global.listaBase[i] + ".jpeg");
+                    Global.listaBase7.Add(dados.GetString(6));
+                    Global.listaBase8.Add(dados.GetString(7));
+
                 }
                 catch (Exception)
                 {
+                    dados.Close();
 
+                    connectionHomol.Close();
                     throw;
                 }
 
-
+                i++;
             }
 
             dados.Close();

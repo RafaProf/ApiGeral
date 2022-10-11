@@ -6,13 +6,37 @@ using ApiGeral.Netdb;
 using System.Web.Http;
 using System.Net;
 using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ApiGeral.Controllers
 {
     public class LoginController : ApiController
     {
         static readonly ILogin repositorio = new LoginRepositorio();
+
+
+        public HttpResponseMessage GetAllLogin()
+        {
+            int opc = Global.opcGeral;
+
+
+            if (opc == 0)
+            {
+                ConnHomolog.GetUsers();
+
+                List<Login> listaLogin = repositorio.GetAll().ToList();
+
+                return Request.CreateResponse<List<Login>>(HttpStatusCode.OK, listaLogin);
+                // return repositorio.GetAll();
+            }
+
+            else
+            {
+                return null;
+            }
+
+        }
 
         [HttpPost]
         public HttpResponseMessage PostLogin(Login item)
@@ -55,6 +79,14 @@ namespace ApiGeral.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Falha na solicitação de dados: Sem dados");
             }
+        }
+
+        public IEnumerable<Login> GetLoginByUser(string usuario)
+        {
+            GetAllLogin();
+            return repositorio.GetAll().Where(
+                item => string.Equals(item.Usuario, usuario, StringComparison.OrdinalIgnoreCase)
+                );
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApiGeral.Models.Getlocation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,7 @@ namespace ApiGeral.Models.Login
     {
         bool Add(Login item);
         Login AddPadrao(Login item);
+        Login Get(string Usuario);
+        IEnumerable<Login> GetAll();
     }
 }
